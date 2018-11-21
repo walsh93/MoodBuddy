@@ -1,0 +1,15 @@
+/*Sources used: 
+    Setting up Angular and Express: https://scotch.io/tutorials/mean-app-with-angular-2-and-the-angular-cli
+    Linking Firebase with Nodejs: https://hackernoon.com/nodejs-setup-firebase-in-4-step-tutorial-example-easy-beginner-service-account-key-json-node-server-d61e803d6cc8
+
+*/
+
+/* Things I typed to get things working: 
+    [sudo] npm install -g @angular-cli
+    npm install --save-dev @angular-devkit/build-angular
+    npm install
+    ng serve
+
+    Firebase:
+    npm install firebase-admin --save
+*/
