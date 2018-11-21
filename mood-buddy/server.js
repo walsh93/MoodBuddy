@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const sessions = require('client-sessions');
 var admin = require('firebase-admin');
 const firebaseConfig = __dirname + "/mood-buddy-firebase-adminsdk-u7omy-5241f4a0c9.json"
 var serviceAccount = require(firebaseConfig);
@@ -21,6 +22,18 @@ admin.initializeApp({
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//Client sessions
+app.use(sessions({
+    cookieName: 'moodBuddySession',
+    secret: 'largeunguessablestring',
+    duration: 30 * 60 * 1000,
+    cookie: {
+        path: '/',
+        ephemeral: true,
+        httpOnly: true,
+    }
+}));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
