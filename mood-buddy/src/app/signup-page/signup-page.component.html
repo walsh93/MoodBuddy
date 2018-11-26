@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      </head>
+  
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="sidebar-nav-fixed affix" style="width:20%">
+              <div class="well">
+                  <h4>Welcome to <b>Mood Buddy</b>, new guest! </h4>
+                  <p>Please fill out our sign up page</p>
+              </div> <!--Well-->
+            </div> <!--sidebar-->
+          </div><!--col-md-3-->
+          <div class="col-md-6">
+            <div class="jumbotron">
+                <h2>Student Sign-Up Page</h2>
+                <br>
+                <div id="input-fields">
+                  <div>
+                    Name: <input id="first_name" type="text" name="name" placeholder="name" required>
+                  </div>
+                  <br><br>
+                
+                  <div>
+                    Email: <input id="email" type="email" name="email" placeholder="example@email.com" required>
+                  </div>
+                  <br><br>
+            
+                  <div>
+                    Password: <input id="password" type="password" name="password" placeholder="Password" required>
+                  </div>
+                  <br><br>
+            
+                  <div>
+                    Confirm Password: <input id="confirm_password" type="password" name="confirm_password" placeholder="Re-type password" required>
+                  </div>
+                  <br><br>
+            
+                  <div>
+                    Choose Your Buddy: 
+                    <select id="buddy" required>
+                      <option value="bear">Bear</option>
+                      <option value="elephant">Elephant</option>
+                      <option value="giraffe">Giraffe</option>
+                      <option value="koala">Koala</option>
+                      <option value="lion">Lion</option>
+                      <option value="panda">Panda</option>
+                      <option value="rhino">Rhino</option>
+                      <option value="sheep">Sheep</option>
+                      <option value="tiger">Tiger</option>
+                    </select>
+                  </div>
+                  <br><br>
+                  <div>
+                    Choose your color:
+                    <select id="color" required>
+                      <option value="blue">Blue</option>
+                      <option value="green">Green</option>
+                      <option value="orange">Orange</option>
+                      <option value="pink">Pink</option>
+                      <option value="purple">Purple</option>
+                      <option value="red">Red</option>
+                    </select>
+                  </div>
+                  <br><br>
+                  <button id="submit" class="btn btn-primary" onClick="onSubmit()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</html>
+
