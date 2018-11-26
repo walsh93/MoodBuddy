@@ -2,10 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MoodLogComponent } from './mood-log/mood-log.component';
+import { JournalComponent } from './journal/journal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomePageComponent,
+    SignInPageComponent,
+    DashboardComponent,
+    MoodLogComponent,
+    JournalComponent
   ],
   imports: [
     BrowserModule
