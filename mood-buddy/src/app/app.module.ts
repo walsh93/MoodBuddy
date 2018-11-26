@@ -7,6 +7,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MoodLogComponent } from './mood-log/mood-log.component';
 import { JournalComponent } from './journal/journal.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { JournalComponent } from './journal/journal.component';
     SignInPageComponent,
     DashboardComponent,
     MoodLogComponent,
-    JournalComponent
+    JournalComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule
