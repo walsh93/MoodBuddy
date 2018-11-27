@@ -3,6 +3,7 @@
     Linking Firebase with Nodejs: https://hackernoon.com/nodejs-setup-firebase-in-4-step-tutorial-example-easy-beginner-service-account-key-json-node-server-d61e803d6cc8
     Client Sessions: https://www.npmjs.com/package/client-sessions
     HTML Tags References: https://www.w3schools.com/tags/default.asp
+    Font Import: https://answers.squarespace.com/questions/173565/css-to-style-nav-to-use-montserrat-light.html
 
 */
 
