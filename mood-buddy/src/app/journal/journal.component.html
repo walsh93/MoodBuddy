@@ -54,7 +54,11 @@
      padding: 10px 20px;
      font: times;
      border-radius: 4px;
- 
+ }
+
+ textarea {
+   font-family: 'Montserrat';
+   font-size: 14px;
  }
 </style>
 
@@ -69,8 +73,9 @@
     <br>
     <div style="text-align:center" >
     <div class="form-group">
-        <textarea id="notes-section" rows="4" cols="50"></textarea>
+        <textarea id="notes-section" rows="20" cols="75" autofocus ></textarea>
     </div>
+    <br>
 
     <div class="row">
         <button class="button" (click)="onSubmit()">Submit</button>

@@ -58,4 +58,9 @@ h2{
     border-radius: 4px;
 
 }
+
+textarea {
+    font-family: 'Montserrat';
+    font-size: 14px;
+  }
  
