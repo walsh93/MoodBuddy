@@ -4,6 +4,7 @@
     Client Sessions: https://www.npmjs.com/package/client-sessions
     HTML Tags References: https://www.w3schools.com/tags/default.asp
     Font Import: https://answers.squarespace.com/questions/173565/css-to-style-nav-to-use-montserrat-light.html
+    Form Control Class: https://getbootstrap.com/docs/4.0/components/forms/
 
 */
 
