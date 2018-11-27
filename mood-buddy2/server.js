@@ -46,7 +46,7 @@ app.use(sessions({
 
 // GET requests sent when routing to the page
 app.get('/', function(request, response) {
-  response.sendFile(path.join(distDir, "index.html"));
+  response.sendFile(path.join(distDir, "/welcome-page/welcome-page.component.html"));
   console.log("GET /");
   console.log(request.headers);
   console.log("\n");
