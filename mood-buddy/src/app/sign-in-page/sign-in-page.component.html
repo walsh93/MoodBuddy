@@ -1,3 +1,18 @@
-<p>
-  sign-in-page works!
-</p>
+<div class="container-fluid">
+
+  <div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="userEmail" name="loginId" placeholder="Email address" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="userPassword" name="password" placeholder="Password" required>
+    </div>
+
+    <div class="button-section">
+      <div class="row">
+        <button class="btn btn-primary" (click)="onLogin()">Login</button>
+      </div>
+    </div>
+  </div>
+
+</div>

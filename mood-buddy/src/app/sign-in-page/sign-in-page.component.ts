@@ -12,4 +12,8 @@ export class SignInPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  onLogin(){
+    alert("login button has been pressed");
+  }
+
 }
