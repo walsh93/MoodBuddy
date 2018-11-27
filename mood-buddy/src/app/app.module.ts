@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { JournalComponent } from './journal/journal.component';
+import { MoodLogComponent } from './mood-log/mood-log.component';
+import { SigninPageComponent } from './signin-page/signin-page.component';
 
 const appRoutes: Routes = [
   {path:'',redirectTo:'welcome', pathMatch:'full'},
@@ -20,7 +24,11 @@ const appRoutes: Routes = [
     AppComponent,
     WelcomePageComponent,
     SignupPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DashboardComponent,
+    JournalComponent,
+    MoodLogComponent,
+    SigninPageComponent
   ],
   imports: [
     BrowserModule,
