@@ -67,7 +67,7 @@ app.get('/signup', function(request, response) {
 });
 
 app.get('/signin', function(request,response){
-    response.sendFile(path.join(distDir, "/signin-page/signin-page.component.html"));
+    response.sendFile(path.join(distDir, "/sign-in-page/sign-in-page.component.html"));
     console.log("GET /signin");
     console.log(request.headers);
     console.log("\n");
