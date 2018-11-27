@@ -3,7 +3,11 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+
+const distDir = __dirname + "/dist/mood-buddy";
+
 const sessions = require('client-sessions');
+
 var admin = require('firebase-admin');
 const firebaseConfig = __dirname + "/mood-buddy-firebase-adminsdk-u7omy-5241f4a0c9.json"
 var serviceAccount = require(firebaseConfig);
@@ -18,6 +22,7 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: 'https://<Mood-Buddy>.firebaseio.com'
   });
+const db = admin.firestore();
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -36,18 +41,22 @@ app.use(sessions({
 }));
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(distDir));
 
 //Routes
-const signupRouter = require(`${routesDir}signup`)
+
 
 // Set our api routes
 app.use('/api', api);
-app.use(c.signup-page, signupRouter);
+//app.use(c.signup-page, signupRouter);
 
+console.log(distDir);
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+app.get('/', function(request, response) {
+  response.sendFile(path.join(distDir, "index.html"));
+  console.log("GET /");
+  console.log(request.headers);
+  console.log("\n");
 });
 
 /**
@@ -64,4 +73,5 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+
+server.listen(port, () => console.log(`Server running on localhost:${port}`));
