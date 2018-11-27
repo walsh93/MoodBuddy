@@ -1,5 +1,5 @@
 //Constants
-const distDir = __dirname + "/dist/mood-buddy2";
+const distDir = __dirname  + "/src/app";
 
 //Dependancies
 const express = require('express');
@@ -53,27 +53,46 @@ app.get('/', function(request, response) {
 });
 
 app.get('/welcome', function(request, response) {
-    response.sendFile(path.join(distDir, "index.html"));
+    response.sendFile(path.join(distDir, "/welcome-page/welcome-page.component.html"));
     console.log("GET /welcome");
     console.log(request.headers);
     console.log("\n");
 });
 
 app.get('/signup', function(request, response) {
-    response.sendFile(path.join(distDir, "index.html"));
+    response.sendFile(path.join(distDir, "/signup-page/signup-page.component.html"));
     console.log("GET /signup");
     console.log(request.headers);
     console.log("\n");
 });
 
 app.get('/signin', function(request,response){
-    response.sendFile(path.join(distDir, "index.html"));
+    response.sendFile(path.join(distDir, "/signin-page/signin-page.component.html"));
     console.log("GET /signin");
     console.log(request.headers);
     console.log("\n");
 });
 
+app.get('/dashboard', function(request,response){
+    response.sendFile(path.join(distDir, "/dashboard/dashboard.component.html"));
+    console.log("GET /dashboard");
+    console.log(request.headers);
+    console.log("\n");
+});
 
+app.get('/log', function(request,response){
+    response.sendFile(path.join(distDir, "/mood-log/mood-log.component.html"));
+    console.log("GET /log");
+    console.log(request.headers);
+    console.log("\n");
+});
+
+app.get('/journal', function(request,response){
+    response.sendFile(path.join(distDir, "/journal/journal.component.html"));
+    console.log("GET /journal");
+    console.log(request.headers);
+    console.log("\n");
+});
 
 app.get('**', function(request,response){
     response.sendFile(path.join(distDir, "index.html"));
