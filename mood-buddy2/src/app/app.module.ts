@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule,Routes, Router} from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,7 +12,7 @@ import { MoodLogComponent } from './mood-log/mood-log.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 
 const appRoutes: Routes = [
-  {path:'',redirectTo:'welcome', pathMatch:'full'},
+  //{path:'',redirectTo:'welcome', pathMatch:'full'},
   {path:'welcome',component:WelcomePageComponent},
   {path:'signup',component:SignupPageComponent},
   {path:'signin',component:SignInPageComponent},
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
       {enableTracing:true}
     )
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
