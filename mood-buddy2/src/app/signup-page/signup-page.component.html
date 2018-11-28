@@ -1,64 +1,118 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      </head>
-  
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="sidebar-nav-fixed affix" style="width:20%">
-              <div class="well">
-                  <h4>Welcome to <b>Mood Buddy</b>, new guest! </h4>
-                  <p>Please fill out our sign up page</p>
-              </div> <!--Well-->
-            </div> <!--sidebar-->
-          </div><!--col-md-3-->
-          <div class="col-md-6">
-            <div class="jumbotron">
-                <h2>Student Sign-Up Page</h2>
-                <br>
-                <div id="input-fields">
-                  <div>
-                    Name: <input id="first_name" type="text" name="name" placeholder="name" required>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+
+.sidebar-nav-fixed {
+  width:14%;
+  margin-top:10%;
+  background-color:none;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  color: #fcdeb1;
+  min-width: 150px;
+}
+.well{
+  background-color: #355c7d;
+  opacity: 0.8;
+}
+
+body {
+  background-image: url(../../../Animal_Icons/backgroundtest.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+h2{
+  text-align: center;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  color: #fcdeb1;
+}
+#submit{
+  background-color: #c06c84;
+  color: white;
+  border: none;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  padding: 23px 48px;
+  font: times;
+  border-radius: 4px;
+}
+.button:hover {
+  background-color: #f8b195;
+  color: #355c7d;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.jumbotron{
+  background:none;
+}
+#input-fields{
+  text-align: center;
+  background-color: rgb(53,92,125,0.2);
+  margin-left:5%;
+}
+</style>
+
+    
+<div class="container">
+  <div class="row">
+  <!--Left Column-->
+    <div class="col-md-3">
+      <div class="sidebar-nav-fixed affix">
+        <div class="well">
+            <div>
+                <img style="display: block; margin-left: auto; margin-right: auto;
+                height:10%; width:100%"
+                 src="../../../Animal_Icons/Logo3.PNG" alt="img not found">
+              </div>
+          <h4>Welcome to <b>Mood Buddy</b>, new guest! </h4>
+            <p>Please fill out our sign up page</p>
+        </div> 
+      </div> 
+    </div>
+  <!--Right Column-->
+    <div class="col-md-6">
+      <div class="jumbotron">
+          <h2>Student Sign-Up Page</h2>
+          <br>
+          <div id="input-fields">
+              <div>
+                  Name: <input id="first_name" type="text" name="name" placeholder="name" required>
+                </div>
+                <br><br>
+                <div>
+                  Email: <input id="email" type="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <br><br>
+                <div>
+                  Password: <input id="password" type="password" name="password" placeholder="Password" required>
+                </div>
+                <br><br>
+                <div>
+                Confirm Password: <input id="confirm_password" type="password" name="confirm_password" placeholder="Re-type password" required>
+                </div>
+                <br><br>
+                <div>
+                  Choose Your Buddy: 
+                      <select id="buddy" required>
+                        <option value="bear">Bear</option>
+                        <option value="elephant">Elephant</option>
+                        <option value="giraffe">Giraffe</option>
+                        <option value="koala">Koala</option>
+                        <option value="lion">Lion</option>
+                        <option value="panda">Panda</option>
+                        <option value="rhino">Rhino</option>
+                        <option value="sheep">Sheep</option>
+                        <option value="tiger">Tiger</option>
+                      </select>
                   </div>
-                  <br><br>
-                
-                  <div>
-                    Email: <input id="email" type="email" name="email" placeholder="example@email.com" required>
-                  </div>
-                  <br><br>
-            
-                  <div>
-                    Password: <input id="password" type="password" name="password" placeholder="Password" required>
-                  </div>
-                  <br><br>
-            
-                  <div>
-                    Confirm Password: <input id="confirm_password" type="password" name="confirm_password" placeholder="Re-type password" required>
-                  </div>
-                  <br><br>
-            
-                  <div>
-                    Choose Your Buddy: 
-                    <select id="buddy" required>
-                      <option value="bear">Bear</option>
-                      <option value="elephant">Elephant</option>
-                      <option value="giraffe">Giraffe</option>
-                      <option value="koala">Koala</option>
-                      <option value="lion">Lion</option>
-                      <option value="panda">Panda</option>
-                      <option value="rhino">Rhino</option>
-                      <option value="sheep">Sheep</option>
-                      <option value="tiger">Tiger</option>
-                    </select>
-                  </div>
-                  <br><br>
-                  <div>
-                    Choose your color:
+                <br><br>
+                <div>
+                  Choose your color:
                     <select id="color" required>
                       <option value="blue">Blue</option>
                       <option value="green">Green</option>
@@ -67,13 +121,12 @@
                       <option value="purple">Purple</option>
                       <option value="red">Red</option>
                     </select>
-                  </div>
-                  <br><br>
-                  <button id="submit" class="btn btn-primary" onClick="onSubmit()">Submit</button>
-            </div>
+                </div>
+                <br><br>
+                <button id="submit" class="btn btn-primary" onClick="onSubmit()">Submit</button>
           </div>
-        </div>
       </div>
+    </div>
+  </div>
+</div>
     
-</html>
-
