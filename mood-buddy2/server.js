@@ -46,7 +46,7 @@ app.use(sessions({
 
 // GET requests sent when routing to the page
 app.get('/', function(request, response) {
-  response.sendFile(path.join(distDir, "index.html"));
+  response.sendFile(path.join(distDir, "/welcome-page/welcome-page.component.html"));
   console.log("GET /");
   console.log(request.headers);
   console.log("\n");
@@ -67,7 +67,7 @@ app.get('/signup', function(request, response) {
 });
 
 app.get('/signin', function(request,response){
-    response.sendFile(path.join(distDir, "/signin-page/signin-page.component.html"));
+    response.sendFile(path.join(distDir, "/sign-in-page/sign-in-page.component.html"));
     console.log("GET /signin");
     console.log(request.headers);
     console.log("\n");
