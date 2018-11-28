@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const sessions = require('client-sessions');
+const userCollection = "users";
 
 
 var admin = require('firebase-admin');
@@ -99,6 +100,36 @@ app.get('**', function(request,response){
     console.log("GET /");
     console.log(request.headers);
     console.log("\n");
+});
+
+/**
+ * This is where firebase post requests will be
+ */
+app.post('/signup', function(request, response) {
+    console.log("You are signing up a student!");
+    db.collection(request.moodBuddySession.dbCollection).where("email", "==", request.body.email).get().then(function(querySnapshot) {
+        if (querySnapshot.size != 0) {
+          response.send("Email already associated with another account. Please sign in");
+        } else if (request.body.password != request.body.confirm_password) {
+          response.send("Passwords don't match. :\\");
+        } else {
+          response.send("Yay!!!!!!!! It worked!!!!!!!");
+          db.collection(request.moodBuddySession.dbCollection).add({
+            name: request.body.name,
+            email: request.body.email,
+            password: request.body.password,
+            buddy: request.body.buddy,
+            color: request.body.color,
+        }).then((docRef) => {
+            const now = new Date()
+            request.moodBuddySession.loginTime = now.getTime();
+            request.moodBuddySession.docId = docRef.id;
+            response.status(c.HTTP_SUCCESS).send('/dashboard');
+          });
+        }
+      }).catch(function(error) {
+        console.log("Error getting documents: ", error);
+      });
 });
 
 

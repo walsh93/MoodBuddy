@@ -27,13 +27,26 @@ export class SignupPageComponent implements OnInit {
     `buddy=${buddy}` +
     `color=${color}`;
 
-    /*
+    
     let request = new XMLHttpRequest();
     request.open("POST",`signup-page`,true);
 
     request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    */
+    
+    request.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (request.status == 202 || request.status == 403) {
+          window.location.href = request.responseText;
+        } else if (request.status == 401 || request.status == 500) {
+          alert(request.responseText);
+        } else {
+          alert("Your POST request received an unhandled response code.");
+        }
+      }
+    }
 
+    // Send the request
+    request.send(body);
   }
 
-}
+  }

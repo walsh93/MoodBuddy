@@ -8,6 +8,7 @@
     Form Control Class: https://getbootstrap.com/docs/4.0/components/forms/
     HTML Center tags: https://www.w3schools.com/tags/att_div_align.asp
     Text inside chat bubble: https://www.w3schools.com/howto/howto_css_image_text.asp
+    Firestore Writing and Reading: https://firebase.google.com/docs/firestore/quickstart
 
 */
 
