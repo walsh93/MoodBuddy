@@ -1,46 +1,70 @@
 //Constants
 const distDir = __dirname + "/dist/mood-buddy";
-
-//Dependancies
+ //Dependancies
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
-const app = express();
-
-// Parsers for POST data
+//const sessions = require('client-sessions');
+ var admin = require('firebase-admin');
+const firebaseConfig = __dirname + "/mood-buddy-firebase-adminsdk-u7omy-5241f4a0c9.json"
+var serviceAccount = require(firebaseConfig);
+ const app = express();
+ // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// Point static path to /local/path/to/CheckedIn/checkedIn/dist
+ //Initialize Firebase and Firestore
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://<Mood-Buddy>.firebaseio.com'
+  });
+const db = admin.firestore();
+ // Point static path to /local/path/to/CheckedIn/checkedIn/dist
 app.use(express.static(__dirname));
 app.use(express.static(distDir));
-
-// GET requests sent when routing to the page
+ /*Client sessions
+app.use(sessions({
+    cookieName: 'moodBuddySession',
+    secret: 'largeunguessablestring',
+    duration: 30 * 60 * 1000,
+    cookie:{
+        path: '/',
+        ephemral:true,
+        httpOnly:true
+    }
+}));
+*/
+ // GET requests sent when routing to the page
 app.get('/', function(request, response) {
   response.sendFile(path.join(distDir, "index.html"));
   console.log("GET /");
   console.log(request.headers);
   console.log("\n");
 });
-
-app.get('/welcome', function(request, response) {
+ app.get('/welcome', function(request, response) {
+    response.sendFile(path.join(distDir, "index.html"));
+    console.log("GET /welcome");
+    console.log(request.headers);
+    console.log("\n");
+});
+ app.get('/signup', function(request, response) {
+    response.sendFile(path.join(distDir, "index.html"));
+    console.log("GET /signup");
+    console.log(request.headers);
+    console.log("\n");
+});
+ app.get('/signin', function(request,response){
+    response.sendFile(path.join(distDir, "index.html"));
+    console.log("GET /signin");
+    console.log(request.headers);
+    console.log("\n");
+});
+ app.get('**', function(request,response){
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /");
     console.log(request.headers);
     console.log("\n");
 });
-
-app.get('/signup', function(request, response) {
-    response.sendFile(path.join(distDir, "index.html"));
-    console.log("GET /");
-    console.log(request.headers);
-    console.log("\n");
-});
-
-
-// Get port from environment
-const port = process.env.PORT || 4200;
-
-app.listen(port);
+ // Get port from environment
+const port = process.env.PORT || 3000;
+ app.listen(port);
 console.log("Server started on port " + port);
