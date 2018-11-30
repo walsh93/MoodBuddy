@@ -1,3 +1,76 @@
-<p>
-  mood-log works!
-</p>
+
+
+<div>
+ <img style="display: block; margin-left: auto; margin-right: auto" src="../../../Animal_Icons/Logo3.PNG" alt="img not found">
+</div>
+
+<div class="container">
+    <img src="../../../Animal_Icons/chatbox.png" alt="Snow" height="150" width="375">
+    <div class="centered2">Good Afternoon, Professor Gustavo.</div>
+    <div class="centered3">Welcome to your mood log page!</div>
+</div>
+<div>
+    <img class="centered" height="150" width="150" style="margin-left: 250;" src="../../../Animal_Icons/RedKoala.png" alt="img not found">
+</div>
+
+<div id="input-fields">
+  <br><br>
+  <!--MOOD-->
+  <div>
+    Choose Your Mood: 
+      <select id="mood" required>
+        <option value="anxious">Anxious</option>
+        <option value="appreciated">Appreciated</option>
+        <option value="excited">Excited</option>
+        <option value="frustrated">Frustrated</option>
+        <option value="happy">Happy</option>
+        <option value="okay">Okay</option>
+        <option value="mad">Mad</option>
+        <option value="sad">Sad</option>
+        <option value="tired">Tired</option>
+      </select>
+  </div>
+  <br>
+  <!--MOOD SCALE-->
+  <div>
+      Rate Your Mood Intensity: 
+        <select id="rate" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+  </div>
+  <br>
+  <!--ACTIVITIES-->
+  <div>
+    What activity did you most recently participate in?
+    <form id="activity">
+      <input type="radio" name="activity" value="work"> work &nbsp;&nbsp;&nbsp;
+      <input type="radio" name="activity" value="school"> school &nbsp;&nbsp;&nbsp;
+      <input type="radio" name="activity" value="social activity"> work <br>
+      <input type="radio" name="activity" value="exercise"> exercise &nbsp;&nbsp;&nbsp;
+      <input type="radio" name="activity" value="eating"> eating &nbsp;&nbsp;&nbsp;
+      <input type="radio" name="activity" value="other" checked> other &nbsp;&nbsp;&nbsp;
+    </form>
+  </div>
+  <!--JOURNAL-->
+  <div>
+    Journal Any Additional Thoughts Here:
+    <div class="form-group">
+        <textarea id="notes-section" rows="5" cols="75" autofocus ></textarea>
+    </div>
+  </div>
+    
+</div>
+
+<div style="text-align: center">
+ <button class = "button" id="log" onClick = "onLog()">Log Mood</button>
+</div>
+<br>
