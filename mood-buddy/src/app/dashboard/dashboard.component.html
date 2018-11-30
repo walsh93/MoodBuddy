@@ -1,3 +1,76 @@
-<p>
-  dashboard works!
-</p>
+
+
+<div>
+ <img style="display: block; margin-left: auto; margin-right: auto" src="../../../Animal_Icons/Logo3.PNG" alt="img not found">
+</div>
+<!---
+<div style="margin-left: 150;">
+<h2 style="margin-left: 150;">Hello {NAME}, it's good to see you again!</h2>
+</div>
+-->
+
+<!--Chatbox with words-->
+<div class="container">
+        <img src="../../../Animal_Icons/chatbox.png" alt="Snow" height="150" width="375">
+        <div class="centered2" id = "greeting"></div>
+        <div class="centered4">Professor Gustavo</div>
+        <!--^^^NAME^^^-->
+        <div class="centered3" id = "week"></div>
+</div>
+
+<!--Script for day of the week-->
+<script>
+        var d = new Date();
+        var weekday = new Array(7);
+        weekday[0] =  "I hope you're having a great Sunday!";
+        weekday[1] = "I hope you're having a great Monday!";
+        weekday[2] = "I hope you're having a great Tuesday!";
+        weekday[3] = "I hope you're having a great Wednesday!";
+        weekday[4] = "I hope you're having a great Thursday!";
+        weekday[5] = "I hope you're having a great Friday!";
+        weekday[6] = "I hope you're having a great Saturday!";
+        var n = weekday[d.getDay()];
+        document.getElementById("week").innerHTML = n;
+</script>
+
+<!--Script for the time of day-->
+<script>
+        var myDate = new Date();
+        var hrs = myDate.getHours();
+    
+        var greet;
+    
+        if (hrs < 12)
+            greet = 'Good Morning, ';
+        else if (hrs >= 12 && hrs <= 17)
+            greet = 'Good Afternoon, ';
+        else if (hrs >= 17 && hrs <= 24)
+            greet = 'Good Evening, ';
+    
+        document.getElementById("greeting").innerHTML = greet;
+</script> 
+
+<div>
+    <img class="centered" height="150" width="150" style="margin-left: 250;" src="../../../Animal_Icons/RedKoala.png" alt="img not found">
+</div>
+        <!--^^^PULL ANIMAL^^^-->
+<br>
+<br>
+<div style="text-align: center">
+    <br>
+    <a style= "text-decoration:none;" href="../mood-log/mood-log.component.html" class="button">Mood Log</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a style= "text-decoration:none;" href="../journal/journal.component.html" class="button">&nbsp;&nbsp;Journal&nbsp;&nbsp;</a>
+    <br>
+    <br>
+</div>
+<div style="text-align: center">
+    <img src="../../../Animal_Icons/Chart_1.png" alt="Snow" height="250" width="375">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="../../../Animal_Icons/Chart_2.png" alt="Snow" height="250" width="375">
+    <br>
+</div>
+<div style="text-align: center">
+ <button class = "button" id="sign_in" onClick = "onSignOut()">Sign Out</button>
+</div> <!--^^^SIGN OUT BUTTON^^^-->
+<br>
