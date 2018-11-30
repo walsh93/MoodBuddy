@@ -4,7 +4,7 @@ const distDir = __dirname + "/dist/mood-buddy";
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-//const sessions = require('client-sessions');
+const sessions = require('client-sessions');
  var admin = require('firebase-admin');
 const firebaseConfig = __dirname + "/mood-buddy-firebase-adminsdk-u7omy-5241f4a0c9.json"
 var serviceAccount = require(firebaseConfig);
@@ -21,7 +21,8 @@ const db = admin.firestore();
  // Point static path to /local/path/to/CheckedIn/checkedIn/dist
 app.use(express.static(__dirname));
 app.use(express.static(distDir));
- /*Client sessions
+
+//Client sessions
 app.use(sessions({
     cookieName: 'moodBuddySession',
     secret: 'largeunguessablestring',
@@ -32,7 +33,7 @@ app.use(sessions({
         httpOnly:true
     }
 }));
-*/
+
  // GET requests sent when routing to the page
 app.get('/', function(request, response) {
   response.sendFile(path.join(distDir, "index.html"));
