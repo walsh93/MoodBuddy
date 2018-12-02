@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
 
 
- @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
  
 .sidebar-nav-fixed {
      width:20%;
 }
    
 body {
-   background-image: url(../../../Animal_Icons/backgroundtest.jpg);
+   background-image: url(../Animal_Icons/backgroundtest.jpg);
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center;
@@ -58,9 +59,3 @@ h2{
     border-radius: 4px;
 
 }
-
-textarea {
-    font-family: 'Montserrat';
-    font-size: 14px;
-  }
- 

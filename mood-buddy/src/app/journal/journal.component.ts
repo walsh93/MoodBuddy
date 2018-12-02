@@ -12,8 +12,4 @@ export class JournalComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
-    
-  }
-
 }

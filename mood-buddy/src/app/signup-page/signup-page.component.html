@@ -1,3 +1,76 @@
-<p>
-  signup-page works!
-</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<div class="container">
+  <div class="row">
+  <!--Left Column-->
+    <div class="col-md-3">
+      <div class="sidebar-nav-fixed affix">
+        <div class="well">
+            <div>
+                <img style="display: block; margin-left: auto; margin-right: auto;
+                height:10%; width:100%"
+                 src="../../../Animal_Icons/Logo3.PNG" alt="img not found">
+              </div>
+          <h4>Welcome to <b>Mood Buddy</b>, new guest! </h4>
+            <p>Please fill out our sign up page</p>
+        </div> 
+      </div> 
+    </div>
+  <!--Right Column-->
+    <div class="col-md-6">
+      <div class="jumbotron">
+          <h2>Student Sign-Up Page</h2>
+          <br>
+          <div id="input-fields">
+              <div>
+                  Name: <input id="name" type="text" name="name" placeholder="name" required>
+                </div>
+                <br><br>
+                <div>
+                  Email: <input id="email" type="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <br><br>
+                <div>
+                  Password: <input id="password" type="password" name="password" placeholder="Password" required>
+                </div>
+                <br><br>
+                <div>
+                Confirm Password: <input id="confirm_password" type="password" name="confirm_password" placeholder="Re-type password" required>
+                </div>
+                <br><br>
+                <div>
+                  Choose Your Buddy: 
+                      <select id="buddy" required>
+                        <option value="bear" selected="selected">Bear</option>
+                        <option value="elephant">Elephant</option>
+                        <option value="giraffe">Giraffe</option>
+                        <option value="koala">Koala</option>
+                        <option value="lion">Lion</option>
+                        <option value="panda">Panda</option>
+                        <option value="rhino">Rhino</option>
+                        <option value="sheep">Sheep</option>
+                        <option value="tiger">Tiger</option>
+                      </select>
+                  </div>
+                <br><br>
+                <div>
+                  Choose your color:
+                    <select id="color" required>
+                      <option value="blue" selected="selected">Blue</option>
+                      <option value="green">Green</option>
+                      <option value="orange">Orange</option>
+                      <option value="pink">Pink</option>
+                      <option value="purple">Purple</option>
+                      <option value="red">Red</option>
+                    </select>
+                </div>
+                <br><br>
+                <button id="submit" class="button" (click)="onSubmit()">Submit</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
