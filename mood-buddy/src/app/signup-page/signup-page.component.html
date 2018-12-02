@@ -26,7 +26,7 @@
           <br>
           <div id="input-fields">
               <div>
-                  Name: <input id="first_name" type="text" name="name" placeholder="name" required>
+                  Name: <input id="name" type="text" name="name" placeholder="name" required>
                 </div>
                 <br><br>
                 <div>
@@ -44,7 +44,7 @@
                 <div>
                   Choose Your Buddy: 
                       <select id="buddy" required>
-                        <option value="bear">Bear</option>
+                        <option value="bear" selected="selected">Bear</option>
                         <option value="elephant">Elephant</option>
                         <option value="giraffe">Giraffe</option>
                         <option value="koala">Koala</option>
@@ -59,7 +59,7 @@
                 <div>
                   Choose your color:
                     <select id="color" required>
-                      <option value="blue">Blue</option>
+                      <option value="blue" selected="selected">Blue</option>
                       <option value="green">Green</option>
                       <option value="orange">Orange</option>
                       <option value="pink">Pink</option>
@@ -68,7 +68,7 @@
                     </select>
                 </div>
                 <br><br>
-                <button id="submit" class="btn btn-primary" onClick="onSubmit()">Submit</button>
+                <button id="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
           </div>
       </div>
     </div>

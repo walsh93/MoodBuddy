@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {path:'signin',component:SignInPageComponent},
   {path:'mood-log',component:MoodLogComponent},
   {path:'journal',component:JournalComponent},
-  {path:'dashboard',component:DashboardComponent},
+  {path:'dashboard/:uid',component:DashboardComponent},
   {path:'**',component:PageNotFoundComponent}
 ];
 
