@@ -103,7 +103,7 @@ app.get('/data-handler/:uid', function(request,response){
  * This is where firebase post requests will be
  */
 app.post('/signup', function(request, response) {
-    console.log("You are signing up a student!");
+    console.log("You are signing up a user!");
     let responseTxt = "";
     db.collection(userCollection).where("email", "==", request.body.email).get().then(function(querySnapshot) {
         if (querySnapshot.size != 0) {
@@ -135,6 +135,50 @@ app.post('/signup', function(request, response) {
         console.log("Error getting documents: ", error);
       });
 });
+
+app.post('/signin', function (request, response) {
+    console.log("You are logging in a user!");
+    let responseTxt = "";
+    db.collection(userCollection).where("email", "==", request.body.email).get().then(function(querySnapshot) {
+      console.log("In the db collection...");
+      if (querySnapshot.size == 0) {
+        console.log("no email in database");
+        request.moodBuddySession.errorHasOccured = true;
+        request.moodBuddySession.errorMessage = `This ${request.body.email} is not associated with an account.`;
+        response.status(401).send('This email does not exist in our database');
+      } else {
+        console.log("The email is in the database!!!");
+        const doc = querySnapshot.docs[0]
+        const docData = doc.data();
+        if (request.body.password == docData.password) {
+          // Set session data
+          console.log("The password is correct!!!");
+          request.moodBuddySession.name = docData.name;
+          request.moodBuddySession.email = docData.email;
+          request.moodBuddySession.buddy = docData.buddy;
+          request.moodBuddySession.color = docData.color;
+          request.moodBuddySession.userID = doc.id;
+          console.log(`${request.moodBuddySession.userID}`);
+          console.log(`${request.moodBuddySession.name}`)
+          request.moodBuddySession.errorHasOccured = false;
+          request.moodBuddySession.errorMessage = "";
+  
+          // Construct route
+          const route = `/dashboard/${request.moodBuddySession.userID}`;
+          console.log("Made the path for redriect");
+          response.status(202).send(route);
+        } else {
+          console.log("The password is incorrect");
+          request.moodBuddySession.errorHasOccured = true;
+          request.moodBuddySession.errorMessage = "Your password was incorrect.";
+          response.status(500).send('Your Password does not match');
+        }
+      }
+    }).catch((error) => {
+      response.status(500).send(`Error:${error}`);
+      console.log("Error getting documents: ", error);
+    });
+  });
  // Get port from environment
 const port = process.env.PORT || 3000;
  app.listen(port);

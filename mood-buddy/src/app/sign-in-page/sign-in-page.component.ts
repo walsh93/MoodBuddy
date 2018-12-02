@@ -12,4 +12,29 @@ export class SignInPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(){
+    const email = (<HTMLInputElement>document.getElementById("userEmail")).value;
+    const password = (<HTMLInputElement>document.getElementById("userPassword")).value;
+
+    const body = `email=${email}&password=${password}`;
+    let request = new XMLHttpRequest();
+    request.open("POST", "/signin", true);
+
+    request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+    request.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (request.status == 202 || request.status == 403) {
+          window.location.href = request.responseText;
+        } else if (request.status == 401 || request.status == 500) {
+          alert(request.responseText);
+        } else {
+          alert(`${request.responseText}Your POST request received an unhandled response code.`);
+        }
+      }
+    }
+    // Send the request
+    request.send(body);
+  }
+
 }
