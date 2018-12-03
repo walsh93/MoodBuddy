@@ -7,15 +7,22 @@
 
 
   
-    <h1>Journal your mood here!</h1>
+    <h1>Previous logs</h1>
     <br>
     <div style="text-align:center" >
-    <div class="form-group">
-        <textarea id="notes-section" rows="20" cols="75" autofocus ></textarea>
+    <div id="notes-list">
+        <div class="card">
+            <div *ngFor="let log of logs; let i = index">
+                <div class="card-header"> {{ date }}</div>
+                    <div class="card-body">
+                        Mood: {{ log.mood }}
+                        Intensity: {{ log.intensity }}
+                        Activity: {{ log.activity }}
+                        Journal: {{ log.journal }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br><br>
 
-    <div class="row">
-            <a style= "text-decoration:none;" routerLink="/dashboard" routerLinkActive="active" class="button">Submit</a>
-      </div>
-  
+    <br><br>
