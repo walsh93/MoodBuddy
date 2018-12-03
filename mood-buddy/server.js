@@ -128,7 +128,7 @@ app.post('/signup', function(request, response) {
             const now = new Date()
             request.moodBuddySession.loginTime = now.getTime();
             request.moodBuddySession.userID = docRef.id;
-            response.status(202).send(`/dashboard/${request.moodBuddySession.userID}`);
+            response.status(200).send(`/dashboard/${request.moodBuddySession.userID}`);
           }).catch((error)=>{
               response.status(500).send(`Error: ${error}`)
               console.log("Error adding to the database:",error);
@@ -162,7 +162,7 @@ app.post('/signin', function (request, response) {
   
           // Construct route
           const route = `/dashboard/${request.moodBuddySession.userID}`;
-          response.status(202).send(route);
+          response.status(200).send(route);
         } else {
           request.moodBuddySession.errorHasOccured = true;
           request.moodBuddySession.errorMessage = "Your password was incorrect.";

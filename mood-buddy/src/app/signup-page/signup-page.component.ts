@@ -35,7 +35,7 @@ export class SignupPageComponent implements OnInit {
     
     request.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
-        if (request.status == 202 || request.status == 403) {
+        if (request.status == 200 || request.status == 403) {
           window.location.href = request.responseText;
         } else if (request.status == 401 || request.status == 500) {
           alert(request.responseText);
