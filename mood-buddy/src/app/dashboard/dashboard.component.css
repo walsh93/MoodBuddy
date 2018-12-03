@@ -35,6 +35,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
  body {
  background-image: url(../../../Animal_Icons/backgroundtest.jpg);
  background-repeat: no-repeat;
@@ -64,6 +66,8 @@
    padding: 23px 48px;
    font: times;
    border-radius: 4px;
+   margin-bottom: 3cm;
+
  }
  .button:hover {
    color: #355c7d;

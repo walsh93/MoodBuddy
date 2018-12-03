@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataHandlerService } from '../data-handler.service';
+import * as _ from 'lodash'
+
+declare var Plotly: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +16,8 @@ export class DashboardComponent implements OnInit {
   color: string;
   pic: string;
   //userID: string;
+
+  @ViewChild('chart') el: ElementRef;
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
@@ -177,7 +182,21 @@ export class DashboardComponent implements OnInit {
             greet = 'Good Evening, ';
     
         document.getElementById("greeting").innerHTML = greet;
-  }
-
   
+        const element = this.el.nativeElement
+
+        var data = [{
+          values: [19, 26, 55, 24, 15, 33, 26, 46, 12],
+          labels: ['Anxious','Appreciated','Excited','Frustrated','Happy','Okay','Mad','Sad','Tired'],
+          type: 'pie'
+        }];
+        
+        var layout = {
+          height: 375,
+          width: 500
+        };
+        
+        Plotly.newPlot(element, data, layout);
+    }
+    
 }
