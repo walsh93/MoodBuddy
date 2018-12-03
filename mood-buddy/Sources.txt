@@ -10,6 +10,7 @@
     Text inside chat bubble: https://www.w3schools.com/howto/howto_css_image_text.asp
     Getting started with Firebase hosting: https://firebase.google.com/docs/hosting/
     Configuring Firebase hosting: https://firebase.google.com/docs/hosting/full-config
+    Troubleshooting initial Firebase setup: https://www.youtube.com/watch?v=aICeVhu2mAE
     
 
 */
