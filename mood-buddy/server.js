@@ -45,31 +45,31 @@ app.use(sessions({
 }));
 
  // GET requests sent when routing to the page
-app.get('/', function(request, response) {
+app.get('/', userNeedsToBeLoggedOut, function(request, response) {
   response.sendFile(path.join(distDir, "index.html"));
   console.log("GET /");
   console.log(request.headers);
   console.log("\n");
 });
- app.get('/welcome', function(request, response) {
+ app.get('/welcome', userNeedsToBeLoggedOut, function(request, response) {
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /welcome");
     console.log(request.headers);
     console.log("\n");
 });
- app.get('/signup', function(request, response) {
+ app.get('/signup', userNeedsToBeLoggedOut, function(request, response) {
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /signup");
     console.log(request.headers);
     console.log("\n");
 });
- app.get('/signin', function(request,response){
+ app.get('/signin', userNeedsToBeLoggedOut, function(request,response){
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /signin");
     console.log(request.headers);
     console.log("\n");
 });
-app.get('/dashboard/:uid', function(request,response){
+app.get('/dashboard/:uid', userNeedsToBeLoggedIn, function(request,response){
     db.collection("users").doc(request.moodBuddySession.userID).get().then((doc)=>{
         if(!doc.exists){
             response.redirect("/page-not-found");
@@ -81,7 +81,7 @@ app.get('/dashboard/:uid', function(request,response){
     console.log(request.headers);
     console.log("\n");
 });
-app.get('/journal', function(request,response){
+app.get('/journal', userNeedsToBeLoggedIn, function(request,response){
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /journal");
     console.log(request.headers);
@@ -118,6 +118,13 @@ app.post('/signup', function(request, response) {
             buddy: request.body.buddy,
             color: request.body.color,
         }).then((docRef) => {
+            //Set Session Data //
+            request.moodBuddySession.name = request.body.name;
+            request.moodBuddySession.email = request.body.email;
+            request.moodBuddySession.buddy = request.body.buddy;
+            request.moodBuddySession.color = request.body.color;
+            request.moodBuddySession.errorHasOccured = false;
+            request.moodBuddySession.errorMessage = "";
             const now = new Date()
             request.moodBuddySession.loginTime = now.getTime();
             request.moodBuddySession.userID = docRef.id;
@@ -150,8 +157,6 @@ app.post('/signin', function (request, response) {
           request.moodBuddySession.buddy = docData.buddy;
           request.moodBuddySession.color = docData.color;
           request.moodBuddySession.userID = doc.id;
-          console.log(`${request.moodBuddySession.userID}`);
-          console.log(`${request.moodBuddySession.name}`)
           request.moodBuddySession.errorHasOccured = false;
           request.moodBuddySession.errorMessage = "";
   
@@ -169,6 +174,31 @@ app.post('/signin', function (request, response) {
       console.log("Error getting documents: ", error);
     });
   });
+
+app.post(`/dashboard/:uid`, function(request,response){
+    if(request.body.sign_out= "sign_out"){
+        request.moodBuddySession.reset();
+        response.redirect("/welcome");
+    }
+});
+//*User Helper Functions*//
+
+function userNeedsToBeLoggedIn(request,response,next){
+    const loggedIn = request.moodBuddySession.userID;
+    if(!loggedIn){
+        response.redirect("/welcome");
+    } else {
+        next();
+    }
+}
+function userNeedsToBeLoggedOut(request,response,next){
+    const loggedIn = request.moodBuddySession.userID;
+    if(loggedIn){
+        response.redirect(`/dashboard/${request.moodBuddySession.docID}`);
+    } else {
+        next();
+    }
+}
  // Get port from environment
 const port = process.env.PORT || 3000;
  app.listen(port);
