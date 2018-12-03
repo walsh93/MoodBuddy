@@ -13,11 +13,15 @@ export class MoodLogComponent implements OnInit {
   color: string;
   pic: string;
   userID: string;
+  date: string;
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
 
   ngOnInit() {
+    var d = new Date();
+    var n = d.toDateString();
+    this.date = n;
     
     this.dataHandlerService.getUserData().then((moodBuddySession)=>{
       this.name=moodBuddySession.name;
@@ -153,14 +157,13 @@ export class MoodLogComponent implements OnInit {
   }//Ngoninit
 
   onLog(){
-    var temp = new Date().toDateString;
-    const date = temp;
+    const d = this.date;
     const mood=(<HTMLInputElement>document.getElementById("mood")).value;
     const rate = (<HTMLInputElement>document.getElementById("rate")).value;
     const activity = (<HTMLInputElement>document.getElementById("activity")).value;
     const journal = (<HTMLInputElement>document.getElementById("journal")).value;
 
-    const body = `date=${date}&` +
+    const body = `date=${d}&` +
     `mood=${mood}&` +
     `rate=${rate}&` +
     `activity=${activity}&` +
