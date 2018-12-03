@@ -13,45 +13,14 @@
 <div class="container">
         <img src="../../../Animal_Icons/chatbox.png" alt="Snow" height="250" width="375">
         <div class="centered2" id = "greeting"></div>
-        <div class="centered4">Professor Gustavo</div>
+        <div class="centered4">{{ name }}</div>
         <!--^^^NAME^^^-->
         <div class="centered3" id = "week"></div>
 </div>
 
-<!--Script for day of the week
-<script>
-        var d = new Date();
-        var weekday = new Array(7);
-        weekday[0] =  "I hope you're having a great Sunday!";
-        weekday[1] = "I hope you're having a great Monday!";
-        weekday[2] = "I hope you're having a great Tuesday!";
-        weekday[3] = "I hope you're having a great Wednesday!";
-        weekday[4] = "I hope you're having a great Thursday!";
-        weekday[5] = "I hope you're having a great Friday!";
-        weekday[6] = "I hope you're having a great Saturday!";
-        var n = weekday[d.getDay()];
-        document.getElementById("week").innerHTML = n;
-</script>
 
-Script for the time of day
-<script>
-        var myDate = new Date();
-        var hrs = myDate.getHours();
-    
-        var greet;
-    
-        if (hrs < 12)
-            greet = 'Good Morning, ';
-        else if (hrs >= 12 && hrs <= 17)
-            greet = 'Good Afternoon, ';
-        else if (hrs >= 17 && hrs <= 24)
-            greet = 'Good Evening, ';
-    
-        document.getElementById("greeting").innerHTML = greet;
-</script> 
---->
 <div>
-    <img class="centered" height="150" width="150" style="margin-left: 250;" src="../../../Animal_Icons/RedKoala.png" alt="img not found">
+    <img id="myBuddy" class="centered" height="150" width="150" style="margin-left: 250;" src="../../../Animal_Icons/RedKoala.png" alt="img not found">
 </div>
         <!--^^^PULL ANIMAL^^^-->
 <br>
@@ -70,7 +39,7 @@ Script for the time of day
     <img src="../../../Animal_Icons/Chart_2.png" alt="Snow" height="250" width="375">
     <br>
 </div>
+<form method="POST">
 <div style="text-align: center">
- <button class = "button" id="sign_in" onClick = "onSignOut()">Sign Out</button>
+ <button class="button" type="submit" id="sign_out" value="sign_out">Sign Out</button>
 </div> <!--^^^SIGN OUT BUTTON^^^-->
-<br>

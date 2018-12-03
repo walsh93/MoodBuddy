@@ -45,31 +45,31 @@ app.use(sessions({
 }));
 
  // GET requests sent when routing to the page
-app.get('/', function(request, response) {
+app.get('/', userNeedsToBeLoggedOut, function(request, response) {
   response.sendFile(path.join(distDir, "index.html"));
   console.log("GET /");
   console.log(request.headers);
   console.log("\n");
 });
- app.get('/welcome', function(request, response) {
+ app.get('/welcome', userNeedsToBeLoggedOut, function(request, response) {
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /welcome");
     console.log(request.headers);
     console.log("\n");
 });
- app.get('/signup', function(request, response) {
+ app.get('/signup', userNeedsToBeLoggedOut, function(request, response) {
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /signup");
     console.log(request.headers);
     console.log("\n");
 });
- app.get('/signin', function(request,response){
+ app.get('/signin', userNeedsToBeLoggedOut, function(request,response){
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /signin");
     console.log(request.headers);
     console.log("\n");
 });
-app.get('/dashboard/:uid', function(request,response){
+app.get('/dashboard/:uid', userNeedsToBeLoggedIn, function(request,response){
     db.collection("users").doc(request.moodBuddySession.userID).get().then((doc)=>{
         if(!doc.exists){
             response.redirect("/page-not-found");
@@ -81,7 +81,7 @@ app.get('/dashboard/:uid', function(request,response){
     console.log(request.headers);
     console.log("\n");
 });
-app.get('/journal', function(request,response){
+app.get('/journal', userNeedsToBeLoggedIn, function(request,response){
     response.sendFile(path.join(distDir, "index.html"));
     console.log("GET /journal");
     console.log(request.headers);
@@ -103,7 +103,6 @@ app.get('/data-handler/:uid', function(request,response){
  * This is where firebase post requests will be
  */
 app.post('/signup', function(request, response) {
-    console.log("You are signing up a user!");
     let responseTxt = "";
     db.collection(userCollection).where("email", "==", request.body.email).get().then(function(querySnapshot) {
         if (querySnapshot.size != 0) {
@@ -112,7 +111,6 @@ app.post('/signup', function(request, response) {
         } else if (request.body.password != request.body.confirm) {
           response.status(401).send("Passwords don't match. :\\");
         } else {
-          console.log(`${request.body.color}`)
           db.collection(userCollection).add({
             name: request.body.name,
             email: request.body.email,
@@ -120,10 +118,16 @@ app.post('/signup', function(request, response) {
             buddy: request.body.buddy,
             color: request.body.color,
         }).then((docRef) => {
+            //Set Session Data //
+            request.moodBuddySession.name = request.body.name;
+            request.moodBuddySession.email = request.body.email;
+            request.moodBuddySession.buddy = request.body.buddy;
+            request.moodBuddySession.color = request.body.color;
+            request.moodBuddySession.errorHasOccured = false;
+            request.moodBuddySession.errorMessage = "";
             const now = new Date()
             request.moodBuddySession.loginTime = now.getTime();
             request.moodBuddySession.userID = docRef.id;
-            console.log("YEET");
             response.status(202).send(`/dashboard/${request.moodBuddySession.userID}`);
           }).catch((error)=>{
               response.status(500).send(`Error: ${error}`)
@@ -137,38 +141,29 @@ app.post('/signup', function(request, response) {
 });
 
 app.post('/signin', function (request, response) {
-    console.log("You are logging in a user!");
     let responseTxt = "";
     db.collection(userCollection).where("email", "==", request.body.email).get().then(function(querySnapshot) {
-      console.log("In the db collection...");
       if (querySnapshot.size == 0) {
-        console.log("no email in database");
         request.moodBuddySession.errorHasOccured = true;
         request.moodBuddySession.errorMessage = `This ${request.body.email} is not associated with an account.`;
         response.status(401).send('This email does not exist in our database');
       } else {
-        console.log("The email is in the database!!!");
         const doc = querySnapshot.docs[0]
         const docData = doc.data();
         if (request.body.password == docData.password) {
           // Set session data
-          console.log("The password is correct!!!");
           request.moodBuddySession.name = docData.name;
           request.moodBuddySession.email = docData.email;
           request.moodBuddySession.buddy = docData.buddy;
           request.moodBuddySession.color = docData.color;
           request.moodBuddySession.userID = doc.id;
-          console.log(`${request.moodBuddySession.userID}`);
-          console.log(`${request.moodBuddySession.name}`)
           request.moodBuddySession.errorHasOccured = false;
           request.moodBuddySession.errorMessage = "";
   
           // Construct route
           const route = `/dashboard/${request.moodBuddySession.userID}`;
-          console.log("Made the path for redriect");
           response.status(202).send(route);
         } else {
-          console.log("The password is incorrect");
           request.moodBuddySession.errorHasOccured = true;
           request.moodBuddySession.errorMessage = "Your password was incorrect.";
           response.status(500).send('Your Password does not match');
@@ -179,6 +174,31 @@ app.post('/signin', function (request, response) {
       console.log("Error getting documents: ", error);
     });
   });
+
+app.post(`/dashboard/:uid`, function(request,response){
+    if(request.body.sign_out= "sign_out"){
+        request.moodBuddySession.reset();
+        response.redirect("/welcome");
+    }
+});
+//*User Helper Functions*//
+
+function userNeedsToBeLoggedIn(request,response,next){
+    const loggedIn = request.moodBuddySession.userID;
+    if(!loggedIn){
+        response.redirect("/welcome");
+    } else {
+        next();
+    }
+}
+function userNeedsToBeLoggedOut(request,response,next){
+    const loggedIn = request.moodBuddySession.userID;
+    if(loggedIn){
+        response.redirect(`/dashboard/${request.moodBuddySession.docID}`);
+    } else {
+        next();
+    }
+}
  // Get port from environment
 const port = process.env.PORT || 3000;
  app.listen(port);
