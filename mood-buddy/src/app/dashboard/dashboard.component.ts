@@ -7,16 +7,26 @@ import { DataHandlerService } from '../data-handler.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
- /*
   name: string;
   email: string;
   buddy: string;
   color: string;
-  userID: string;
+  //userID: string;
 
   constructor(private dataHandlerService: DataHandlerService) { }
-*/
+
+
   ngOnInit() {
+    
+    this.dataHandlerService.getUserData().then((moodBuddySession)=>{
+      this.name=moodBuddySession.name;
+      this.email=moodBuddySession.email;
+      this.buddy=moodBuddySession.buddy;
+      this.color=moodBuddySession.color;
+      //this.userID= moodBuddySession.userID;
+    });
+    
+
         var d = new Date();
         var weekday = new Array(7);
         weekday[0] =  "I hope you're having a great Sunday!";
@@ -42,15 +52,6 @@ export class DashboardComponent implements OnInit {
             greet = 'Good Evening, ';
     
         document.getElementById("greeting").innerHTML = greet;
-  /*
-    this.dataHandlerService.getUserData().then((moodBuddySession)=>{
-    this.name=moodBuddySession.name;
-    this.email=moodBuddySession.email;
-      this.buddy=moodBuddySession.buddy;
-      this.color=moodBuddySession.color;
-      this.userID= moodBuddySession.userID;
-    });
-    */
   }
 
   
