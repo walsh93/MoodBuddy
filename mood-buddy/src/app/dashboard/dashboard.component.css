@@ -76,3 +76,16 @@
 .buffer{
     margin-bottom: 1cm;
 }
+
+.imagetest {
+    width: 100%; /* Image container is now full-width */
+}
+
+.imagetest img {
+    margin: 40px auto; /* "auto" will center block elements */
+    display: block; /* Set images to be "block" so they obey our auto margin */
+}
+
+.overall {
+    min-width: 1080px;
+}
