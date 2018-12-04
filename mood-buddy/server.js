@@ -102,7 +102,8 @@ app.get('/journal', userNeedsToBeLoggedIn, function(request,response){
     console.log("\n");
 });
 app.get('/data-handler/:uid', function(request,response){
-    db.collection("users").doc(request.moodBuddySession.userID).get().then((doc)=>{
+    const userID = request.moodBuddySession.userID;
+    db.collection("users").doc(userID).get().then((doc)=>{
         if(!doc.exists){
             response.redirect("/page-not-found");
         } else {
@@ -207,8 +208,9 @@ app.post(`/dashboard/:uid`, function(request,response){
 });
 
 app.post('/mood-log', function(request, response){
-    const userID = request.body.userID;
+    const userID = request.moodBuddySession.userID;
     console.log("We out here.");
+    console.log(`${userID}`)
     db.collection(userCollection).doc(userID).get().then((doc) =>{
         if(!doc.exists){
             response.status(401).send('Database error');
