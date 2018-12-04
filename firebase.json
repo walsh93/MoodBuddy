@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/mood-buddy",
+    "public": "mood-buddy",
     "ignore": [
       "firebase.json",
       "**/.*",
