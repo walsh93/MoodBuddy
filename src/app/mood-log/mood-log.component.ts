@@ -21,7 +21,7 @@ export class MoodLogComponent implements OnInit {
   ngOnInit() {
     var d = new Date();
     var n = d.toDateString();
-    this.date = n;
+    this.date = String(n);
     
     this.dataHandlerService.getUserData().then((moodBuddySession)=>{
       this.name=moodBuddySession.name;

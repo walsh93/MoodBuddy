@@ -13,7 +13,7 @@
     <div id="notes-list">
         <div class="card bg-basic text-black">
             <div *ngFor="let log of logs; let i = index">
-                <div class="card-header"> <h4>{{ date }}</h4></div>
+                <div class="card-header"> <h4>{{ log.date }}</h4></div>
                     <div class="card-body">
                         <h4>Mood: {{ log.mood }} </h4>
                         

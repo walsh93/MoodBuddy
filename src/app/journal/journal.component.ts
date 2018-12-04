@@ -30,7 +30,7 @@ export class JournalComponent implements OnInit {
           this.mood = this.logs[i].mood;
           this.rate = this.logs[i].rate;
           this.activity = this.logs[i].activity;
-          this.date = this.logs[i].date;
+          this.date = String(this.logs[i].date);
           this.journal = this.logs[i].journal;
         }
       }
