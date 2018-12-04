@@ -13,28 +13,30 @@
 /* Centered text */
 .centered {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -75%);
+    top: 47%;
+    left: 67%;
+    transform: translate(-50%, -50%);
 }
 .centered2 {
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 .centered3 {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 .centered4 {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
  body {
  background-image: url(../../../Animal_Icons/backgroundtest.jpg);
  background-repeat: no-repeat;
@@ -64,8 +66,13 @@
    padding: 23px 48px;
    font: times;
    border-radius: 4px;
+   border: 2px solid white;
  }
  .button:hover {
    color: #355c7d;
    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
  }
+
+.buffer{
+    margin-bottom: 1cm;
+}

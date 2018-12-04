@@ -10,7 +10,33 @@
     Text inside chat bubble: https://www.w3schools.com/howto/howto_css_image_text.asp
     Getting started with Firebase hosting: https://firebase.google.com/docs/hosting/
     Configuring Firebase hosting: https://firebase.google.com/docs/hosting/full-config
+<<<<<<< HEAD
     Troubleshooting initial Firebase setup: https://www.youtube.com/watch?v=aICeVhu2mAE
+=======
+    Concat int with string: https://stackoverflow.com/questions/4234533/how-do-i-concatenate-a-string-with-a-variable
+    Bar Graphs for Dashboard: https://plot.ly/javascript/bar-charts/
+    Pie Graphs for Dashboard: https://plot.ly/javascript/pie-charts/
+    Button Configuration: https://www.w3schools.com/css/css3_buttons.asp
+    Vertical HTML Spacing: https://stackoverflow.com/questions/9140999/how-can-i-insert-vertical-blank-space-into-an-html-document
+    Importing images: https://www.w3schools.com/html/html_images.asp
+    Customizing images: https://www.w3schools.com/css/css3_images.asp
+    Header Styles: https://www.w3schools.com/Html/html_styles.asp
+    Alignment: https://www.w3schools.com/cssref/pr_text_text-align.asp
+    Custom Colors: https://www.w3schools.com/tags/ref_colornames.asp
+    Button Alignment: https://stackoverflow.com/questions/7560832/how-to-center-a-button-within-a-div
+    Consistent Background Image: https://html.com/attributes/body-background/
+    Font Customization: https://www.w3schools.com/cssref/css_websafe_fonts.asp
+    Specific Font Wanted: https://answers.squarespace.com/questions/173565/css-to-style-nav-to-use-montserrat-light.html
+    Image Specifications: https://www.w3schools.com/tags/att_img_width.asp
+    Text on image: https://www.w3schools.com/howto/howto_css_image_text.asp
+    No Underline For Buttons: https://support.e2ma.net/Resource_Center/Account_how-to/How_to_remove_a_link's_underline   
+    Custom Greeting (which day of week): https://stackoverflow.com/questions/9677757/how-to-get-the-day-of-the-week-from-the-day-number-in-javascript
+    Custom Greeting (time of day):https://www.encodedna.com/javascript/say-good-morning-afternoon-evening-using-javascript.htm
+    Graphing Data: https://www.sitepoint.com/graph-data-with-firebase/
+    Graphing Data (mostly early implementation):https://www.youtube.com/watch?v=Ga0vrqed6Ho
+    Custom Graphs in javascript: https://plot.ly/javascript/
+    Bootstrap Cards: https://www.w3schools.com/bootstrap4/bootstrap_cards.asp
+>>>>>>> 7817fd8ec9abb764a888c7c54f0dfd400cf1d77f
     
 
 */

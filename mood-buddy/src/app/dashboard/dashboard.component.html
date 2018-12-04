@@ -11,7 +11,7 @@
 
 <!--Chatbox with words-->
 <div class="container">
-        <img src="../../../Animal_Icons/chatbox.png" alt="Snow" height="250" width="375">
+        <img src="../../../Animal_Icons/chatbox.png" alt="Snow" height="150" width="375">
         <div class="centered2" id = "greeting"></div>
         <div class="centered4">{{ name }}</div>
         <!--^^^NAME^^^-->
@@ -25,21 +25,46 @@
         <!--^^^PULL ANIMAL^^^-->
 <br>
 <br>
+<br>
+<br>
 <div style="text-align: center">
+
     <br>
     <a style= "text-decoration:none;" routerLink="/mood-log" routerLinkActive="active" class="button">Mood Log</a>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a style= "text-decoration:none;" routerLink="/journal" routerLinkActive="active" class="button">&nbsp;&nbsp;Journal&nbsp;&nbsp;</a>
     <br>
     <br>
+    <p class = "buffer"></p>
 </div>
+
 <div style="text-align: center">
-    <img src="../../../Animal_Icons/Chart_1.png" alt="Snow" height="250" width="375">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="../../../Animal_Icons/Chart_2.png" alt="Snow" height="250" width="375">
-    <br>
+    <img height="100" width="375" src="../../../Animal_Icons/Moods.png" alt="img not found">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img height="115" width="425" src="../../../Animal_Icons/Moods2.png" alt="img not found">
 </div>
+<!--<div style="text-align: center">
+    <img height="100" width="375" src="../../../Animal_Icons/Moods.png" alt="img not found">
+</div>
+-->
+<div style="text-align: center">
+    <div style="display: inline-block;" #chart></div>
+    &nbsp;&nbsp;
+    <div style="display: inline-block;" #chart2></div>
+</div>
+<!--
+<div style="text-align: center">
+    <img height="115" width="425" src="../../../Animal_Icons/Moods2.png" alt="img not found">
+</div>
+
+<div style="text-align: center">
+    <div style="display: inline-block;" #chart2></div>
+</div>
+--->
+<p class = "buffer"></p>
+
 <form method="POST">
 <div style="text-align: center">
  <button class="button" type="submit" id="sign_out" value="sign_out">Sign Out</button>
 </div> <!--^^^SIGN OUT BUTTON^^^-->
+</form>

@@ -26,13 +26,14 @@ h2{
   color: #fcdeb1;
 }
 #submit{
-  background-color: #c06c84;
+  background-color: #f8b195;
   color: white;
   border: none;
   font-family: 'Montserrat';
   font-size: 14px;
   padding: 23px 48px;
   font: times;
+  border: 2px solid white;
   border-radius: 4px;
 }
 .button:hover {

@@ -15,21 +15,26 @@
 /* Centered text */
 .centered {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -75%);
+    top: 47%;
+    left: 67%;
+    transform: translate(-50%, -50%);
 }
 
 .centered2 {
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .centered3 {
     position: absolute;
-    top: 50%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.centered4 {
+    position: absolute;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -64,6 +69,7 @@
    padding: 23px 48px;
    font: times;
    border-radius: 4px;
+   border: 2px solid white;
  }
  .button:hover {
    color: #355c7d;
