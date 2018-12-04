@@ -66,10 +66,13 @@
    padding: 23px 48px;
    font: times;
    border-radius: 4px;
-   margin-bottom: 3cm;
-
+   border: 2px solid white;
  }
  .button:hover {
    color: #355c7d;
    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
  }
+
+.buffer{
+    margin-bottom: 3cm;
+}

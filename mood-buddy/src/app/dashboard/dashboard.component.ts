@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataHandlerService } from '../data-handler.service';
+//import { AngularFirestore, AngularFirestoreDocument } from  '@angular/fire/firestore'
 import * as _ from 'lodash'
 
 declare var Plotly: any;
@@ -15,7 +16,9 @@ export class DashboardComponent implements OnInit {
   buddy: string;
   color: string;
   pic: string;
-  //userID: string;
+  userID: string;
+  logs = [];
+  moodArray = [0, 0, 0, 0, 0, 0, 0, 0, 0,];
 
   @ViewChild('chart') el: ElementRef;
 
@@ -23,14 +26,32 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
     this.dataHandlerService.getUserData().then((moodBuddySession)=>{
       this.name=moodBuddySession.name;
       this.email=moodBuddySession.email;
       this.buddy=moodBuddySession.buddy;
       this.color=moodBuddySession.color;
 
-      //* GET BUDDY ICON *//
+      //* Conley's Test code *//
+      this.userID = moodBuddySession.userID;
+
+      this.logs = moodBuddySession.logs;
+      if(this.logs){
+        for(let i = 0; i < this.logs.length; i++){
+          this.logs[i].mood;
+         // `${this.logs[i].mood}`);
+          if(this.logs[i].mood=="excited"){
+            this.moodArray[3] = this.moodArray[3] + parseInt(`${this.logs[i].rate}`);
+
+          }
+        }
+      } else {
+          //empty graph here!
+      }
+      window.alert(`${this.moodArray[3]}`);
+
+      /* GET BUDDY ICON */
       if(this.color == "Blue"){
         if(this.buddy == "Bear"){
           document.getElementById("myBuddy").setAttribute("src","../../../Animal_Icons/BlueBear.png");
@@ -153,8 +174,23 @@ export class DashboardComponent implements OnInit {
         } 
 
       }
-    });
+
+      var data = [{
+        values: this.moodArray,
+        //firebase log data needs to be added here ^
+        labels: ['Anxious','Appreciated','Excited','Frustrated','Happy','Okay','Mad','Sad','Tired'],
+        type: 'pie'
+      }];
       
+      var layout = {
+        height: 375,
+        width: 500
+      };
+      
+      Plotly.newPlot(element, data, layout);
+
+    });
+    
        
 
         var d = new Date();
@@ -184,9 +220,10 @@ export class DashboardComponent implements OnInit {
         document.getElementById("greeting").innerHTML = greet;
   
         const element = this.el.nativeElement
-
+       /* 
         var data = [{
-          values: [19, 26, 55, 24, 15, 33, 26, 46, 12],
+          values: this.moodArray,
+          //firebase log data needs to be added here ^
           labels: ['Anxious','Appreciated','Excited','Frustrated','Happy','Okay','Mad','Sad','Tired'],
           type: 'pie'
         }];
@@ -197,6 +234,7 @@ export class DashboardComponent implements OnInit {
         };
         
         Plotly.newPlot(element, data, layout);
+        */
     }
     
 }
