@@ -17,6 +17,14 @@
 
 <div id="input-fields">
   <br><br>
+  <!--Date
+  <div>
+    
+    What day are you logging?
+    <input type="text" id=mood value="mm/dd/yyyy" required>
+    <br>
+  </div>
+  -->
   <!--MOOD-->
   <div>
     Choose Your Mood: 
@@ -53,26 +61,26 @@
   <!--ACTIVITIES-->
   <div>
     What activity did you most recently participate in?
-    <form id="activity">
-      <input type="radio" name="activity" value="work"> work &nbsp;&nbsp;&nbsp;
-      <input type="radio" name="activity" value="school"> school &nbsp;&nbsp;&nbsp;
-      <input type="radio" name="activity" value="social activity"> work <br>
-      <input type="radio" name="activity" value="exercise"> exercise &nbsp;&nbsp;&nbsp;
-      <input type="radio" name="activity" value="eating"> eating &nbsp;&nbsp;&nbsp;
-      <input type="radio" name="activity" value="other" checked> other &nbsp;&nbsp;&nbsp;
-    </form>
+    <select id="activity" required>
+      <option value="work" selected>Work</option>
+      <option value="school">School</option>
+      <option value="social">Social Activity</option>
+      <option value="exercise">Excercise</option>
+      <option value="eating">Eating</option>
+      <option value="other">Other</option>
+    </select>
   </div>
   <!--JOURNAL-->
   <div>
     Journal Any Additional Thoughts Here:
     <div class="form-group">
-        <textarea id="notes-section" rows="5" cols="75" autofocus ></textarea>
+        <textarea id="journal" rows="5" cols="75" autofocus ></textarea>
     </div>
   </div>
     
 </div>
 
 <div style="text-align: center">
- <button class = "button" id="log" onClick = "onLog()">Log Mood</button>
+ <button class = "button" id="log" (click)="onLog()">Log Mood</button>
 </div>
 <br>

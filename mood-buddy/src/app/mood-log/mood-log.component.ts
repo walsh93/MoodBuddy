@@ -12,18 +12,23 @@ export class MoodLogComponent implements OnInit {
   buddy: string;
   color: string;
   pic: string;
-  //userID: string;
+  userID: string;
+  date: string;
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
 
   ngOnInit() {
-
+    var d = new Date();
+    var n = d.toDateString();
+    this.date = n;
+    
     this.dataHandlerService.getUserData().then((moodBuddySession)=>{
       this.name=moodBuddySession.name;
       this.email=moodBuddySession.email;
       this.buddy=moodBuddySession.buddy;
       this.color=moodBuddySession.color;
+      this.userID=moodBuddySession.userID;
 
       //* GET BUDDY ICON *//
       if(this.color == "Blue"){
@@ -164,6 +169,41 @@ export class MoodLogComponent implements OnInit {
 
     document.getElementById("greeting").innerHTML = greet;
     
+  }//Ngoninit
+
+  onLog(){
+    const d = this.date;
+    const mood=(<HTMLInputElement>document.getElementById("mood")).value;
+    const rate = (<HTMLInputElement>document.getElementById("rate")).value;
+    const activity = (<HTMLInputElement>document.getElementById("activity")).value;
+    const journal = (<HTMLInputElement>document.getElementById("journal")).value;
+
+    const body = `date=${d}&` +
+    `mood=${mood}&` +
+    `rate=${rate}&` +
+    `activity=${activity}&` +
+    `journal=${journal}&` +
+    `userID=${this.userID}&`;
+
+    
+    let request = new XMLHttpRequest();
+    request.open("POST","/mood-log",true);
+
+    request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    
+    request.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (request.status == 202 || request.status == 403) {
+          window.location.href = request.responseText;
+        } else if (request.status == 401 || request.status == 500) {
+          alert(request.responseText);
+        } else {
+          alert(`${request.responseText}Your POST request received an unhandled response code.`);
+        }
+      }
+    }
+    // Send the request
+    request.send(body);
   }
 
 }

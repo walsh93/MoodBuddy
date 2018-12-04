@@ -13,6 +13,7 @@ const userCollection = "users";
 const firebaseConfig = __dirname + "/mood-buddy-firebase-adminsdk-u7omy-5241f4a0c9.json"
 var serviceAccount = require(firebaseConfig);
  const app = express();
+ const FieldValue = require('firebase-admin').firestore.FieldValue;
 
  // Parsers for POST data
 app.use(bodyParser.json());
@@ -75,6 +76,18 @@ app.get('/dashboard/:uid', userNeedsToBeLoggedIn, function(request,response){
             response.redirect("/page-not-found");
         } else {
             //response.json(doc.data);
+            response.sendFile(path.join(distDir,"index.html"));
+        }
+    })
+    console.log("GET /dashboard");
+    console.log(request.headers);
+    console.log("\n");
+});
+app.get('/mood-log', userNeedsToBeLoggedIn, function(request,response){
+    db.collection("users").doc(request.moodBuddySession.userID).get().then((doc)=>{
+        if(!doc.exists){
+            response.redirect("/page-not-found");
+        } else {
             response.sendFile(path.join(distDir,"index.html"));
         }
     })
@@ -191,6 +204,37 @@ app.post(`/dashboard/:uid`, function(request,response){
         request.moodBuddySession.reset();
         response.redirect("/welcome");
     }
+});
+
+app.post('/mood-log', function(request, response){
+    const userID = request.body.userID;
+    console.log("We out here.");
+    db.collection(userCollection).doc(userID).get().then((doc) =>{
+        if(!doc.exists){
+            response.status(401).send('Database error');
+        }else{
+            console.log("Is there an error yet?");
+            const logs = doc.data().logs;
+            const log = {
+                date: request.body.date,
+                mood: request.body.mood,
+                rate: request.body.rate,
+                activity: request.body.activity,
+                journal: request.body.journal
+            };
+            doc.ref.update({
+                logs: FieldValue.arrayUnion(log),
+            }).then(()=>{
+                response.status(202).send(`/dashboard/${userID}`);
+            }).catch((error)=>{
+                response.status(500).send(`Error: ${error}`)
+                console.log("Error adding to the database:",error);
+            });
+        }
+    }).catch((error)=>{
+        response.status(500).send(`Error: ${error}`)
+        console.log("Error getting document:",error);
+    });
 });
 //*User Helper Functions*//
 
