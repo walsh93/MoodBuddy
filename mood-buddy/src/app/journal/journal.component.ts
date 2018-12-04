@@ -26,7 +26,7 @@ export class JournalComponent implements OnInit {
       this.userID = moodBuddySession.userId;
       this.logs = moodBuddySession.logs;
       if(this.logs){
-        for(let i = 0; i < this.logs.length; i++){
+        for(let i = this.logs.length-1; i >=0 ; i++){
           this.mood = this.logs[i].mood;
           this.rate = this.logs[i].rate;
           this.activity = this.logs[i].activity;

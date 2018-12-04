@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
       this.userID = moodBuddySession.userID;
 
       this.logs = moodBuddySession.logs;
-      if(this.logs){
+/*      if(this.logs){
         for(let i = 0; i < this.logs.length; i++){
           //this.logs[i].mood;
          // `${this.logs[i].mood}`);
@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit {
       } else {
           //empty graph here!
       }
-
+*/
       /* GET BUDDY ICON */
       if(this.color == "Blue"){
         if(this.buddy == "Bear"){
@@ -255,6 +255,99 @@ export class DashboardComponent implements OnInit {
         } 
 
       }
+
+      if(this.logs){
+        for(let i = 0; i < this.logs.length; i++){
+          //this.logs[i].mood;
+         // `${this.logs[i].mood}`);
+         if(this.logs[i].mood=="anxious"){
+          this.moodArray[0] = this.moodArray[0] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="appreciated"){
+          this.moodArray[1] = this.moodArray[1] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="excited"){
+          this.moodArray[2] = this.moodArray[2] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="frustrated"){
+          this.moodArray[3] = this.moodArray[3] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="happy"){
+          this.moodArray[4] = this.moodArray[4] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="okay"){
+          this.moodArray[5] = this.moodArray[5] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="mad"){
+          this.moodArray[6] = this.moodArray[6] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="sad"){
+          this.moodArray[7] = this.moodArray[7] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="tired"){
+          this.moodArray[8] = this.moodArray[8] + parseInt(`${this.logs[i].rate}`);
+
+          }
+        }
+        let j = 0;
+        for(let i = this.logs.length-1; i >= 0 && i > this.logs.length-8; i--){
+          //this.logs[i].mood;
+         // `${this.logs[i].mood}`);
+        if(this.logs[i].mood=="anxious"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Anxious";
+        }
+        else if(this.logs[i].mood=="appreciated"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Appreciated";
+
+        }
+        else if(this.logs[i].mood=="excited"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Excited";
+        }
+        else if(this.logs[i].mood=="frustrated"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Frustrated";
+
+        }
+        else if(this.logs[i].mood=="happy"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Happy";
+
+        }
+        else if(this.logs[i].mood=="okay"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Okay";
+        }
+        else if(this.logs[i].mood=="mad"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Mad";
+
+        }
+        else if(this.logs[i].mood=="sad"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Sad";
+
+        }
+        else if(this.logs[i].mood=="tired"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Tired";
+        }
+        j = j + 1;
+        }        
+      } else {
+          //empty graph here!
+      }
+
 
       var data = [{
         values: this.moodArray,
