@@ -33,7 +33,7 @@
     Graphing Data (mostly early implementation):https://www.youtube.com/watch?v=Ga0vrqed6Ho
     Custom Graphs in javascript: https://plot.ly/javascript/
     Bootstrap Cards: https://www.w3schools.com/bootstrap4/bootstrap_cards.asp
-    
+    Heroku troubleshooting: https://stackoverflow.com/questions/46885249/heroku-deploy-issue-sh-1-ng-not-found
 
 */
 
