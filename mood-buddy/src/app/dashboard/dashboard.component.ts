@@ -19,8 +19,11 @@ export class DashboardComponent implements OnInit {
   userID: string;
   logs = [];
   moodArray = [0, 0, 0, 0, 0, 0, 0, 0, 0,];
+  moodArray2 = [0, 0, 0, 0, 0, 0, 0,]
+  moodArray2Names = [" ", " ", " ", " ", " ", " ", " ",]
 
   @ViewChild('chart') el: ElementRef;
+  @ViewChild('chart2') el2: ElementRef;
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
@@ -78,6 +81,53 @@ export class DashboardComponent implements OnInit {
 
           }
         }
+        let j = 0;
+        for(let i = this.logs.length-1; i >= 0 && i > this.logs.length-8; i--){
+          //this.logs[i].mood;
+         // `${this.logs[i].mood}`);
+        if(this.logs[i].mood=="anxious"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Anxious";
+        }
+        else if(this.logs[i].mood=="appreciated"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Appreciated";
+
+        }
+        else if(this.logs[i].mood=="excited"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Excited";
+        }
+        else if(this.logs[i].mood=="frustrated"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Frustrated";
+
+        }
+        else if(this.logs[i].mood=="happy"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Happy";
+
+        }
+        else if(this.logs[i].mood=="okay"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Okay";
+        }
+        else if(this.logs[i].mood=="mad"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Mad";
+
+        }
+        else if(this.logs[i].mood=="sad"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Sad";
+
+        }
+        else if(this.logs[i].mood=="tired"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Tired";
+        }
+        j = j + 1;
+        }        
       } else {
           //empty graph here!
       }
@@ -220,6 +270,21 @@ export class DashboardComponent implements OnInit {
       
       Plotly.newPlot(element, data, layout);
 
+      var data2 = [
+        {
+          x: this.moodArray2Names,
+          y: this.moodArray2,
+          type: 'bar'
+        }
+      ];
+
+      var layout2 = {
+        height: 375,
+        width: 500
+      };
+      
+      Plotly.newPlot(element2, data2, layout2);
+
     });
     
        
@@ -251,6 +316,8 @@ export class DashboardComponent implements OnInit {
         document.getElementById("greeting").innerHTML = greet;
   
         const element = this.el.nativeElement
+
+        const element2 = this.el2.nativeElement
        /* 
         var data = [{
           values: this.moodArray,
