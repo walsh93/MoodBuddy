@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataHandlerService } from '../data-handler.service';
+//import { AngularFirestore, AngularFirestoreDocument } from  '@angular/fire/firestore'
+import * as _ from 'lodash'
+
+declare var Plotly: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -12,20 +16,123 @@ export class DashboardComponent implements OnInit {
   buddy: string;
   color: string;
   pic: string;
-  //userID: string;
+  userID: string;
+  logs = [];
+  moodArray = [0, 0, 0, 0, 0, 0, 0, 0, 0,];
+  moodArray2 = [0, 0, 0, 0, 0, 0, 0,]
+  moodArray2Names = [" ", " ", " ", " ", " ", " ", " ",]
+
+  @ViewChild('chart') el: ElementRef;
+  @ViewChild('chart2') el2: ElementRef;
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
 
   ngOnInit() {
-    
+
     this.dataHandlerService.getUserData().then((moodBuddySession)=>{
       this.name=moodBuddySession.name;
       this.email=moodBuddySession.email;
       this.buddy=moodBuddySession.buddy;
       this.color=moodBuddySession.color;
 
-      //* GET BUDDY ICON *//
+      //* Conley's Test code *//
+      this.userID = moodBuddySession.userID;
+
+      this.logs = moodBuddySession.logs;
+      if(this.logs){
+        for(let i = 0; i < this.logs.length; i++){
+          //this.logs[i].mood;
+         // `${this.logs[i].mood}`);
+         if(this.logs[i].mood=="anxious"){
+          this.moodArray[0] = this.moodArray[0] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="appreciated"){
+          this.moodArray[1] = this.moodArray[1] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="excited"){
+          this.moodArray[2] = this.moodArray[2] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="frustrated"){
+          this.moodArray[3] = this.moodArray[3] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="happy"){
+          this.moodArray[4] = this.moodArray[4] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="okay"){
+          this.moodArray[5] = this.moodArray[5] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="mad"){
+          this.moodArray[6] = this.moodArray[6] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="sad"){
+          this.moodArray[7] = this.moodArray[7] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="tired"){
+          this.moodArray[8] = this.moodArray[8] + parseInt(`${this.logs[i].rate}`);
+
+          }
+        }
+        let j = 0;
+        for(let i = this.logs.length-1; i >= 0 && i > this.logs.length-8; i--){
+          //this.logs[i].mood;
+         // `${this.logs[i].mood}`);
+        if(this.logs[i].mood=="anxious"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Anxious";
+        }
+        else if(this.logs[i].mood=="appreciated"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Appreciated";
+
+        }
+        else if(this.logs[i].mood=="excited"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Excited";
+        }
+        else if(this.logs[i].mood=="frustrated"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Frustrated";
+
+        }
+        else if(this.logs[i].mood=="happy"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Happy";
+
+        }
+        else if(this.logs[i].mood=="okay"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Okay";
+        }
+        else if(this.logs[i].mood=="mad"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Mad";
+
+        }
+        else if(this.logs[i].mood=="sad"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Sad";
+
+        }
+        else if(this.logs[i].mood=="tired"){
+          this.moodArray2[j] = parseInt(`${this.logs[i].rate}`);
+          this.moodArray2Names[j] = (j+1) + " - Tired";
+        }
+        j = j + 1;
+        }        
+      } else {
+          //empty graph here!
+      }
+
+      /* GET BUDDY ICON */
       if(this.color == "Blue"){
         if(this.buddy == "Bear"){
           document.getElementById("myBuddy").setAttribute("src","../../../Animal_Icons/BlueBear.png");
@@ -148,8 +255,38 @@ export class DashboardComponent implements OnInit {
         } 
 
       }
-    });
+
+      var data = [{
+        values: this.moodArray,
+        //firebase log data needs to be added here ^
+        labels: ['Anxious','Appreciated','Excited','Frustrated','Happy','Okay','Mad','Sad','Tired'],
+        type: 'pie'
+      }];
       
+      var layout = {
+        height: 375,
+        width: 500
+      };
+      
+      Plotly.newPlot(element, data, layout);
+
+      var data2 = [
+        {
+          x: this.moodArray2Names,
+          y: this.moodArray2,
+          type: 'bar'
+        }
+      ];
+
+      var layout2 = {
+        height: 375,
+        width: 500
+      };
+      
+      Plotly.newPlot(element2, data2, layout2);
+
+    });
+    
        
 
         var d = new Date();
@@ -177,7 +314,25 @@ export class DashboardComponent implements OnInit {
             greet = 'Good Evening, ';
     
         document.getElementById("greeting").innerHTML = greet;
-  }
-
   
+        const element = this.el.nativeElement
+
+        const element2 = this.el2.nativeElement
+       /* 
+        var data = [{
+          values: this.moodArray,
+          //firebase log data needs to be added here ^
+          labels: ['Anxious','Appreciated','Excited','Frustrated','Happy','Okay','Mad','Sad','Tired'],
+          type: 'pie'
+        }];
+        
+        var layout = {
+          height: 375,
+          width: 500
+        };
+        
+        Plotly.newPlot(element, data, layout);
+        */
+    }
+    
 }
