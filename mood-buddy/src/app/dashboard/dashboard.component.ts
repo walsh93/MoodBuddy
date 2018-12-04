@@ -39,17 +39,48 @@ export class DashboardComponent implements OnInit {
       this.logs = moodBuddySession.logs;
       if(this.logs){
         for(let i = 0; i < this.logs.length; i++){
-          this.logs[i].mood;
+          //this.logs[i].mood;
          // `${this.logs[i].mood}`);
-          if(this.logs[i].mood=="excited"){
-            this.moodArray[3] = this.moodArray[3] + parseInt(`${this.logs[i].rate}`);
+         if(this.logs[i].mood=="anxious"){
+          this.moodArray[0] = this.moodArray[0] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="appreciated"){
+          this.moodArray[1] = this.moodArray[1] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="excited"){
+          this.moodArray[2] = this.moodArray[2] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="frustrated"){
+          this.moodArray[3] = this.moodArray[3] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="happy"){
+          this.moodArray[4] = this.moodArray[4] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="okay"){
+          this.moodArray[5] = this.moodArray[5] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="mad"){
+          this.moodArray[6] = this.moodArray[6] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="sad"){
+          this.moodArray[7] = this.moodArray[7] + parseInt(`${this.logs[i].rate}`);
+
+        }
+        if(this.logs[i].mood=="tired"){
+          this.moodArray[8] = this.moodArray[8] + parseInt(`${this.logs[i].rate}`);
 
           }
         }
       } else {
           //empty graph here!
       }
-      window.alert(`${this.moodArray[3]}`);
 
       /* GET BUDDY ICON */
       if(this.color == "Blue"){
