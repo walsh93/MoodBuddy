@@ -11,18 +11,23 @@
     <br>
     <div style="text-align:center" >
     <div id="notes-list">
-        <div class="card">
+        <div class="card bg-basic text-black">
             <div *ngFor="let log of logs; let i = index">
-                <div class="card-header"> {{ date }}</div>
+                <div class="card-header"> <h4>{{ date }}</h4></div>
                     <div class="card-body">
-                        Mood: {{ log.mood }}
-                        Intensity: {{ log.intensity }}
-                        Activity: {{ log.activity }}
-                        Journal: {{ log.journal }}
+                        <h4>Mood: {{ log.mood }} </h4>
+                        
+                        <h4>Intensity: {{ log.rate }}</h4>
+                        
+                        <h4>Activity: {{ log.activity }}</h4>
+                        
+                        <h4>Journal: {{ log.journal }}</h4>
+                        <br><br>
                     </div>
                 </div>
             </div>
         </div>
+        <a style= "text-decoration:none;" routerLink="{{ link }}" routerLinkActive="active" class="button">Dashboard</a>
     </div>
 
     <br><br>

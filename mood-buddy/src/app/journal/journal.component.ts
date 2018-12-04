@@ -10,28 +10,32 @@ export class JournalComponent implements OnInit {
   user: User = new User();
   userID: string;
   mood: string;
-  intensity: string;
+  rate: number;
   journal: string;
   activity: string;
   date: string;
+  logs = [];
+  link: string; 
 
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
   ngOnInit() {
-
+  
     this.dataHandlerService.getUserData().then((moodBuddySession)=>{
       this.userID = moodBuddySession.userId;
-      const logs = moodBuddySession.logs;
-      let i = 0;
-      for(i = 0; i < logs.length; i++){
-       this.mood = logs[i].mood;
-       this.intensity = logs[i].intensity;
-       this.date = logs[i].date;
-       this.activity = logs[i].activity;
-       this.journal = logs[i].journal;
+      this.logs = moodBuddySession.logs;
+      if(this.logs){
+        for(let i = 0; i < this.logs.length; i++){
+          this.mood = this.logs[i].mood;
+          this.rate = this.logs[i].rate;
+          this.activity = this.logs[i].activity;
+          this.date = this.logs[i].date;
+          this.journal = this.logs[i].journal;
+        }
       }
-    });
-  }
+      this.link = "/dashboard/" + this.userID;
+  });
+}
 
 }
