@@ -14,7 +14,9 @@ Technologies Used
 
 Database: Firebase 
 Responsive Design: Bootstrap 
-Routing: Angular 
+Front End Framework: Angular
+Routing: Express
+Server: Node.js
 Hosting: Heroku
 Languages: HTML, CSS, Javascript
 Graphs: Plot.ly
