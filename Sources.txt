@@ -18,6 +18,7 @@
     Importing images: https://www.w3schools.com/html/html_images.asp
     Customizing images: https://www.w3schools.com/css/css3_images.asp
     Header Styles: https://www.w3schools.com/Html/html_styles.asp
+    Header Alignment: https://stackoverflow.com/questions/17652259/how-to-get-horizontal-alignment-of-headers
     Alignment: https://www.w3schools.com/cssref/pr_text_text-align.asp
     Custom Colors: https://www.w3schools.com/tags/ref_colornames.asp
     Button Alignment: https://stackoverflow.com/questions/7560832/how-to-center-a-button-within-a-div

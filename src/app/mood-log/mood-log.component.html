@@ -1,5 +1,4 @@
-
-
+<div style = "min-width: 1080px;">
 <div>
  <img style="display: block; margin-left: auto; margin-right: auto" src="../../../Animal_Icons/Logo3.png" alt="img not found">
 </div>
@@ -13,8 +12,10 @@
     <div class="centered4">{{ name }}</div>
     <div class="centered3">Welcome to your mood log page!</div>
 </div>
+<p class = "buffer2"></p>
+<div style = "margin-bottom: 2cm"></div>
 
-<div id="input-fields">
+<div id="input-fields" style="clear: both;">
   <br><br>
   <!--Date
   <div>
@@ -25,8 +26,30 @@
   </div>
   -->
   <!--MOOD-->
-  <div>
-    Choose Your Mood: 
+  <div style = "display: inline-block;">
+      <div style="clear: both;">
+          <div class="container2" style="float: left;width: 65%; margin-bottom: -70px">
+            <div>Choose Your Mood:</div>
+          </div>
+          <div style="float: right; width: 30%; margin-bottom: -30px" >       
+              <select id="mood" required>
+              <option value="anxious">Anxious</option>
+              <option value="appreciated">Appreciated</option>
+              <option value="excited">Excited</option>
+              <option value="frustrated">Frustrated</option>
+              <option value="happy">Happy</option>
+              <option value="okay">Okay</option>
+              <option value="mad">Mad</option>
+              <option value="sad">Sad</option>
+              <option value="tired">Tired</option>
+            </select>
+      </div>
+    </div>
+  </div>
+  <!--
+    <div class="container2">
+      <div>Choose Your Mood:</div>
+      </div>
       <select id="mood" required>
         <option value="anxious">Anxious</option>
         <option value="appreciated">Appreciated</option>
@@ -39,39 +62,58 @@
         <option value="tired">Tired</option>
       </select>
   </div>
+  -->
   <br>
+  <p class = "buffer"></p>
   <!--MOOD SCALE-->
-  <div>
-      Rate Your Mood Intensity: 
-        <select id="rate" required>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
+  <div style = "display: inline-block;">
+      <div style="clear: both;">
+          <div class="container2" style="float: left;width: 88%; margin-bottom: -70px">
+            <div>Rate Your Mood Intensity:</div>
+          </div> 
+          <div style="float: right; width: 10%; margin-bottom: -30px" >   
+            <select id="rate" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
   </div>
   <br>
+  <p class = "buffer"></p>
   <!--ACTIVITIES-->
-  <div>
-    What activity did you most recently participate in?
-    <select id="activity" required>
-      <option value="work" selected>Work</option>
-      <option value="school">School</option>
-      <option value="social">Social Activity</option>
-      <option value="exercise">Excercise</option>
-      <option value="eating">Eating</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
+  <div style = "display: inline-block;">
+      <div style="clear: both;">
+          <div class="container2" style="float: left;width: 80%; margin-bottom: -30px">
+            <div>What activity did you most recently participate in?</div>
+          </div> 
+          <div style="float: right; width: 20%; margin-bottom: -30px" >   
+            <select id="activity" required>
+            <option value="work" selected>Work</option>
+            <option value="school">School</option>
+            <option value="social">Social Activity</option>
+            <option value="exercise">Excercise</option>
+            <option value="eating">Eating</option>
+            <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+    </div>
+    <p class = "buffer"></p>
   <!--JOURNAL-->
-  <div>
-    Journal Any Additional Thoughts Here:
+
+  <div style = "display: inline-block;">
+    <div class="container2" style="float: left;width: 60%; min-width: 1080px; margin-top: 15px; margin-bottom: 5px">
+        <div>Journal Any Additional Thoughts Here:</div>
+      </div> 
     <div class="form-group">
         <textarea id="journal" rows="5" cols="75" autofocus ></textarea>
     </div>
@@ -79,7 +121,15 @@
     
 </div>
 
-<div style="text-align: center">
+<div style="text-align: center; margin-left: 10px">
  <button class = "button" id="log" (click)="onLog()">Log Mood</button>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <a style= "text-decoration:none;" routerLink="{{ link }}" routerLinkActive="active" class="button">Dashboard</a>
 </div>
+<!--
+<div style = "text-align: center">
+  <a style= "text-decoration:none;" routerLink="{{ link }}" routerLinkActive="active" class="button">Dashboard</a>
+</div>
+-->
 <br>
+</div>

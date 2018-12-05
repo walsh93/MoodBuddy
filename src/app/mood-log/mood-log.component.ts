@@ -14,6 +14,7 @@ export class MoodLogComponent implements OnInit {
   pic: string;
   userID: string;
   date: string;
+  link: string; 
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
@@ -29,6 +30,7 @@ export class MoodLogComponent implements OnInit {
       this.buddy=moodBuddySession.buddy;
       this.color=moodBuddySession.color;
       this.userID=moodBuddySession.userID;
+      this.link = "/dashboard/" + this.userID;
 
       //* GET BUDDY ICON *//
       if(this.color == "Blue"){
