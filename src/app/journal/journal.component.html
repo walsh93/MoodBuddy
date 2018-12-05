@@ -4,29 +4,42 @@
     <img style="display: block; margin-left: auto; margin-right: auto" src="../../../Animal_Icons/Logo2.PNG" alt="img not found">
 </div>
 
-
+<div style="text-align: center">
+    <img id="myBuddy" height="150" width="150" style="margin-left: 470px; margin-bottom: -250px" src="../../../Animal_Icons/blank.png" alt="img not found">
+  </div>
+  <div class="container">
+      <img src="../../../Animal_Icons/chatbox.png" alt="Snow" height="150" width="375">
+      <div class="centered2">Hi There!</div>
+      <div class="centered4">{{ name }}</div>
+      <div class="centered3">You can find your journal here!</div>
+  </div>
 
   
     <h1>Previous logs</h1>
     <br>
     <div style="text-align:center" >
-    <div id="notes-list">
-        <div class="card bg-basic text-black">
-            <div *ngFor="let log of logs; let i = index">
-                <div class="card-header"> <h4>{{ date }}</h4></div>
-                    <div class="card-body">
-                        <h4>Mood: {{ log.mood }} </h4>
+    <div id="notes-list" >
+        <div class="card bg-basic text-black" >
+            <div *ngFor="let log of logs; let i = index" >
+                <div class="card-body"style="background-color: white; min-width: 400px; max-width: 600px; display: inline-block; margin-bottom: 1cm">
+                    <h1>{{ date }}</h1>
+
+                    <h4>Mood: {{ log.mood }} </h4>
                         
-                        <h4>Intensity: {{ log.rate }}</h4>
+                    <h4>Intensity: {{ log.rate }}</h4>
                         
-                        <h4>Activity: {{ log.activity }}</h4>
+                    <h4>Activity: {{ log.activity }}</h4>
                         
-                        <h4>Journal: {{ log.journal }}</h4>
-                        <br><br>
+                    <h4>Journal:</h4>
+                    <div style="max-width: 350px; display: inline-block; margin-top: -1cm">
+                    <h5>{{ log.journal }}</h5>
                     </div>
+                </div>
+                    
                 </div>
             </div>
         </div>
+        
         <a style= "text-decoration:none;" routerLink="{{ link }}" routerLinkActive="active" class="button">Dashboard</a>
     </div>
 
