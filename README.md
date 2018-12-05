@@ -17,3 +17,4 @@ Responsive Design: Bootstrap
 Routing: Angular 
 Hosting: Heroku
 Languages: HTML, CSS, Javascript
+Graphs: Plot.ly
