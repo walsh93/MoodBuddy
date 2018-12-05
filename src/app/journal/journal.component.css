@@ -24,7 +24,7 @@
      text-align: center;
      font-family: 'Montserrat';
      font-weight: 500;
-     color: #fcdeb1;
+     color: #c06c84;
  }
     
  h2{
@@ -34,14 +34,29 @@
      color: #fcdeb1;
  
  }
+
+h3 {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: #355c7d; 
+}
+
+ h4{
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: #c06c84; 
+}
  
  h5{
     text-align: left;
     font-family: 'Montserrat';
     font-weight: 400;
-    color:black;
+    color:#355c7d;
 
 }
+
  .button{
      background-color: #f8b195;
      color: white;

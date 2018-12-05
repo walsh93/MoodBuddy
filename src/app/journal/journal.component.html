@@ -15,7 +15,7 @@
   </div>
 
   
-    <h1>Previous logs</h1>
+    <h1> </h1>
     <br>
     <div style="text-align:center" >
     <div id="notes-list" >
@@ -23,17 +23,27 @@
             <div *ngFor="let log of logs; let i = index" >
                 <div class="card-body"style="background-color: white; min-width: 400px; max-width: 600px; display: inline-block; margin-bottom: 1cm">
                     <h1>{{ log.date }}</h1>
+                    
+                    <div style="clear: both; margin-bottom: -1cm ">
+                        <h3 style="float: left;width: 80%; margin-bottom: -70px">Mood:</h3>
+                        <h4 style="float: right; width: 80%;" > {{ log.mood }} </h4>
+                    </div>
+                        
+                    <div style="clear: both; margin-top: -1cm; margin-bottom: -1cm ">
+                        <h3 style="float: left;width: 80%; margin-bottom: -70px">Intensity:</h3>
+                        <h4 style="float: right; width: 80%;" > {{ log.rate }}</h4>
+                    </div>
 
-                    <h4>Mood: {{ log.mood }} </h4>
-                        
-                    <h4>Intensity: {{ log.rate }}</h4>
-                        
-                    <h4>Activity: {{ log.activity }}</h4>
-                        
-                    <h4>Journal:</h4>
+                    <div style="clear: both; margin-top: -1cm;">
+                        <h3 style="float: left;width: 80%; margin-bottom: -70px">Activity:</h3> 
+                        <h4 style="float: right; width: 80%;" > {{ log.activity }}</h4>
+                    </div>
+                    <div>
+                    <h3 style="margin-top: 2cm">Journal:</h3>
                     <div style="max-width: 350px; display: inline-block; margin-top: -1cm">
                     <h5>{{ log.journal }}</h5>
                     </div>
+                    <div>
                 </div>
                     
                 </div>
